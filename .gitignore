@@ -1,0 +1,8 @@
+# Data directory
+bot/data/*
+
+# Compiled python files
+*.pyc
+
+# Hidden directories
+.*/

@@ -1,0 +1,21 @@
+from bot.models.discord.role import Role
+
+REDSTONE_TIER = Role(
+    id=993158122535399537,
+)
+
+TORCH_TIER = Role(
+    id=993159556567937034,
+)
+
+REPEATER_TIER = Role(
+    id=993159726982516786,
+)
+
+LAMP_TIER = Role(
+    id=993159901201305640,
+)
+
+SWORD_TIER = Role(
+    id=993160003068379256,
+)
