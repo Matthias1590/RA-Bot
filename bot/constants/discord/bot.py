@@ -1,6 +1,7 @@
 import sys
 from typing import List, Type
 from bot.cogs.base import BaseCog
+from bot.cogs.listeners import ListenersCog
 from bot.cogs.utility import UtilityCog
 
 
@@ -11,6 +12,7 @@ DEBUG_GUILDS = [
 ]
 
 COGS: List[Type[BaseCog]] = [
+    ListenersCog,
     UtilityCog,
 ]
 
