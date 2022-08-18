@@ -1,9 +1,0 @@
-- Add a readme
-- Add a license
-- Use markdown for this todo list
-- Add logging
-- Figure out a good place to store the token
-- Add exception handling (just some listener that sends embeds on errors)
-- Find a better place for some utils (like Sendable, MultipageEmbed, etc.), also think about them more and rewrite them
-- Make models that have an id field keep track of the id themselves (increment a static id variable in the constructor)
-- Set up continuous integration
