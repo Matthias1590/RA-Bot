@@ -5,7 +5,7 @@ import discord
 from bot.utils.status_embed import EmbedStatus, StatusEmbed
 
 
-class SendableError(Sendable):
+class SendableError(Exception, Sendable):
     title: str
     description: str
 
@@ -29,9 +29,7 @@ class InternalServerError(SendableError):
 
     @property
     def description(self) -> str:
-        return repr(
-            self.exception
-        )  # TODO: Make sure this displays the exception message
+        return str(self.exception)
 
 
 class InvalidArgumentError(SendableError):
@@ -47,7 +45,7 @@ class InvalidArgumentTypeError(InvalidArgumentError):
 
     @property
     def description(self) -> str:
-        return f"Expected {self.expected}, got {self.got}"
+        return f"Expected `{self.expected.__name__}` but got `{self.got.__name__}` instead."
 
 
 # TODO: Add constraints which we can use to validate arguments (IntConstraint(min, max), CustomContstraint(func), etc.)
