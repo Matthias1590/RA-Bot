@@ -1,20 +1,21 @@
 from enum import Enum
+from typing import List
 from typing_extensions import Self
 import discord
 
 
 class EmbedStatus(Enum):
-    INFO = 0
-    SUCCESS = 1
-    WARNING = 2
-    ERROR = 3
+    INFO = 0x00AE86
+    SUCCESS = 0x00FF00
+    WARNING = 0xFFD800
+    ERROR = 0xFF0000
 
 
 class StatusEmbed:
     status: EmbedStatus
     title: str
     description: str
-    fields: list[discord.EmbedField]
+    fields: List[discord.EmbedField]
 
     def __init__(self) -> None:
         self.status = EmbedStatus.INFO
