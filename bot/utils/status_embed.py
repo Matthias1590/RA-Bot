@@ -10,7 +10,6 @@ class EmbedStatus(Enum):
     WARNING = 0xFFD800
     ERROR = 0xFF0000
 
-
 class StatusEmbed:
     status: EmbedStatus
     title: str
@@ -25,18 +24,27 @@ class StatusEmbed:
 
     def set_status(self, status: EmbedStatus) -> Self:
         self.status = status
+
         return self
 
     def set_title(self, title: str) -> Self:
         self.title = title
+
         return self
 
     def set_description(self, description: str) -> Self:
         self.description = description
+
         return self
 
-    def add_field(self, name: str, value: str) -> Self:
-        self.fields.append(discord.EmbedField(name=name, value=value))
+    def add_field(self, field: discord.EmbedField) -> Self:
+        self.fields.append(field)
+
+        return self
+    
+    def add_fields(self, fields: List[discord.EmbedField]) -> Self:
+        self.fields.extend(fields)
+
         return self
 
     def build(self) -> discord.Embed:
