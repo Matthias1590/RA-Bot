@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 from typing_extensions import Self
 from bot.utils.sendable import Sendable
 import discord
@@ -28,5 +28,10 @@ class MultiPageEmbed(Sendable):
 
         return self
 
+    async def on_timeout(self) -> None:
+        """
+        This method will be called when the timeout occurs, overwrite it to use it.
+        """
+
     async def send(self, ctx: discord.ApplicationContext) -> discord.Message:
-        ...
+        raise NotImplementedError("Keep track of the message, update the index and buttons on a button press")
