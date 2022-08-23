@@ -13,6 +13,7 @@ import discord
 
 class PatreonManager(BaseManager):
     def get_tier(self, member: discord.Member) -> Optional[Tier]:
+        # TODO: Use set intersection instead of this
         for tier in TIERS:
             if tier.role in member.roles:
                 return tier

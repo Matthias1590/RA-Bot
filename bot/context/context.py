@@ -3,6 +3,8 @@ import os
 from typing import Optional
 
 from bot.context.patreon import PatreonContext
+from bot.context.message import MessageContext
+
 from bot.constants import context as constants
 from bot.utils.utils import get_data_path
 
@@ -13,9 +15,11 @@ class Context:
     instance: Optional[Context] = None
 
     patreon: PatreonContext
+    message: MessageContext
 
     def __init__(self) -> None:
         self.patreon = PatreonContext()
+        self.message = MessageContext()
 
     @staticmethod
     def get() -> Context:

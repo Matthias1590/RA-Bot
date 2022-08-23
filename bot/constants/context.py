@@ -1,1 +1,2 @@
-CONTEXT_PATH = "context.dill"
+CONTEXT_PATH = "context.pickle"
+MAX_SNIPED_MESSAGES = 100
