@@ -46,6 +46,11 @@ class StatusEmbed:
         self.fields.extend(fields)
 
         return self
+    
+    def clear_fields(self) -> Self:
+        self.fields.clear()
+
+        return self
 
     def build(self) -> discord.Embed:
         return discord.Embed(

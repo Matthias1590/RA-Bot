@@ -16,7 +16,7 @@ manager = Manager()
 # TODO: Get rid of this, it's just for debugging
 @bot.event
 async def on_ready() -> None:
-    print("Ready")
+    print(f"Logged in as {bot.user}")
 
 
 for cog in constants.COGS:
