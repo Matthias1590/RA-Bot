@@ -15,10 +15,9 @@ class SendableError(Exception, Sendable):
             .set_status(EmbedStatus.ERROR)
             .set_title(self.title)
             .set_description(self.description)
-            .build()
         )
 
-        return await ctx.respond(embed=embed)
+        return await ctx.respond(embed=embed.build())
 
 
 class InternalServerError(SendableError):
