@@ -12,7 +12,7 @@ class UtilityCog(BaseCog):
         await ctx.respond(f"Pong! {round(self.bot.latency * 1000)}ms")
     
     @commands.Cog.listener()
-    def on_message_delete(self, message: discord.Message) -> None:  # TODO: Figure out if we should use on_raw_message_delete instead of this
+    async def on_message_delete(self, message: discord.Message) -> None:  # TODO: Figure out if we should use on_raw_message_delete instead of this
         # TODO: Figure out a better way to turn a message into a deleted message
         message.deleted_at = datetime.datetime.now()
 
