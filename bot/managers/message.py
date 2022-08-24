@@ -1,15 +1,14 @@
 from typing import List
-from bot.constants.patreon.tiers import TIERS
 from bot.managers.base import BaseManager
 from bot.constants import context as constants
 
-import discord
+from bot.models.discord.deleted_message import DeletedMessage
 
 class MessageManager(BaseManager):
-    def get_sniped_messages(self, channel: discord.TextChannel) -> List[discord.Message]:
-        return self.context.message.sniped_messages.get(channel.id, [])
+    def get_sniped_messages(self, channel_id: int) -> List[DeletedMessage]:
+        return self.context.message.sniped_messages.get(channel_id, [])
     
-    def log_deleted_message(self, message: discord.Message) -> None:
+    def log_deleted_message(self, message: DeletedMessage) -> None:
         messages = self.context.message.sniped_messages
 
         if message.channel.id not in messages:
