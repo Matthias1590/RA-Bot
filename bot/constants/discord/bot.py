@@ -1,4 +1,3 @@
-import sys
 from typing import List, Type
 from bot.cogs.base import BaseCog
 from bot.cogs.listeners import ListenersCog
@@ -14,5 +13,3 @@ COGS: List[Type[BaseCog]] = [
     ListenersCog,
     UtilityCog,
 ]
-
-TOKEN = sys.argv[1]
