@@ -9,6 +9,8 @@ class EmbedStatus(Enum):
     SUCCESS = 0x00FF00
     WARNING = 0xFFD800
     ERROR = 0xFF0000
+    DEBUG = 0x665d5d
+
 
 class StatusEmbed:
     status: EmbedStatus
@@ -20,6 +22,7 @@ class StatusEmbed:
         self.status = EmbedStatus.INFO
         self.title = ""
         self.description = ""
+        self.timestamp = None
         self.fields = []
 
     def set_status(self, status: EmbedStatus) -> Self:
@@ -37,11 +40,16 @@ class StatusEmbed:
 
         return self
 
+    def set_timestamp(self, timestamp) -> Self:
+        self.timestamp = timestamp
+
+        return self
+
     def add_field(self, field: discord.EmbedField) -> Self:
         self.fields.append(field)
 
         return self
-    
+
     def add_fields(self, fields: List[discord.EmbedField]) -> Self:
         self.fields.extend(fields)
 
@@ -52,5 +60,6 @@ class StatusEmbed:
             title=self.title,
             description=self.description,
             color=self.status.value,
+            timestamp=self.timestamp,
             fields=self.fields,
         )
