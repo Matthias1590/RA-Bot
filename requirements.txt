@@ -1,2 +1,2 @@
-py-cord==2.0.0
+py-cord==2.0.1
 typing_extensions==4.3.0
