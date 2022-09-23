@@ -1,28 +1,31 @@
 from enum import Enum
 from typing import List
 from typing_extensions import Self
+
 import discord
+import datetime
 
 
 class EmbedStatus(Enum):
+    DEBUG = 0x665D5D
     INFO = 0x00AE86
     SUCCESS = 0x00FF00
     WARNING = 0xFFD800
     ERROR = 0xFF0000
-    DEBUG = 0x665d5d
 
 
 class StatusEmbed:
     status: EmbedStatus
     title: str
     description: str
+    timestamp: datetime.datetime | None
     fields: List[discord.EmbedField]
 
     def __init__(self) -> None:
         self.status = EmbedStatus.INFO
         self.title = ""
         self.description = ""
-        self.timestamp = None
+        self.timestamp = datetime.datetime.now()
         self.fields = []
 
     def set_status(self, status: EmbedStatus) -> Self:
@@ -40,7 +43,7 @@ class StatusEmbed:
 
         return self
 
-    def set_timestamp(self, timestamp) -> Self:
+    def set_timestamp(self, timestamp: datetime.datetime | None) -> Self:
         self.timestamp = timestamp
 
         return self
