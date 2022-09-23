@@ -1,8 +1,7 @@
-from discord import Embed, Webhook
-from enum import Enum
 from aiohttp import ClientSession
-
 from bot.utils.status_embed import StatusEmbed, EmbedStatus
+
+import discord
 
 
 class Logger:
@@ -12,9 +11,9 @@ class Logger:
         self.webhook_url = webhook_url
 
     # TODO: Consider moving this into utils (maybe even create some webhook wrapper), also it should probably return something
-    async def send_embed(self, embed: Embed) -> None:
+    async def send_embed(self, embed: discord.Embed) -> None:
         async with ClientSession() as session:
-            await Webhook.from_url(url=self.webhook_url, session=session).send(
+            await discord.Webhook.from_url(url=self.webhook_url, session=session).send(
                 embed=embed
             )
 
