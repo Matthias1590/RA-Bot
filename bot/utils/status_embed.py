@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List
+from typing import List, Optional
 from typing_extensions import Self
 
 import discord
@@ -18,7 +18,7 @@ class StatusEmbed:
     status: EmbedStatus
     title: str
     description: str
-    timestamp: datetime.datetime | None
+    timestamp: Optional[datetime.datetime]
     fields: List[discord.EmbedField]
 
     def __init__(self) -> None:
@@ -43,7 +43,7 @@ class StatusEmbed:
 
         return self
 
-    def set_timestamp(self, timestamp: datetime.datetime | None) -> Self:
+    def set_timestamp(self, timestamp: Optional[datetime.datetime]) -> Self:
         self.timestamp = timestamp
 
         return self
