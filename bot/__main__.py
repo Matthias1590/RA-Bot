@@ -26,7 +26,7 @@ logger = Logger(webhook_url=args.logurl)
 # TODO: Get rid of this, it's just for debugging
 @bot.event
 async def on_ready() -> None:
-    print(f"Running bot as {bot.user} in {'debug' if args.debug else 'release'} mode")
+    await logger.debug("Bot online.")
 
 
 for cog in constants.COGS:
