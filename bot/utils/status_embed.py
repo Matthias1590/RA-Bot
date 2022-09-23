@@ -1,6 +1,6 @@
+from __future__ import annotations
 from enum import Enum
 from typing import List, Optional
-from typing_extensions import Self
 
 import discord
 import datetime
@@ -28,32 +28,32 @@ class StatusEmbed:
         self.timestamp = datetime.datetime.now()
         self.fields = []
 
-    def set_status(self, status: EmbedStatus) -> Self:
+    def set_status(self, status: EmbedStatus) -> StatusEmbed:
         self.status = status
 
         return self
 
-    def set_title(self, title: str) -> Self:
+    def set_title(self, title: str) -> StatusEmbed:
         self.title = title
 
         return self
 
-    def set_description(self, description: str) -> Self:
+    def set_description(self, description: str) -> StatusEmbed:
         self.description = description
 
         return self
 
-    def set_timestamp(self, timestamp: Optional[datetime.datetime]) -> Self:
+    def set_timestamp(self, timestamp: Optional[datetime.datetime]) -> StatusEmbed:
         self.timestamp = timestamp
 
         return self
 
-    def add_field(self, field: discord.EmbedField) -> Self:
+    def add_field(self, field: discord.EmbedField) -> StatusEmbed:
         self.fields.append(field)
 
         return self
 
-    def add_fields(self, fields: List[discord.EmbedField]) -> Self:
+    def add_fields(self, fields: List[discord.EmbedField]) -> StatusEmbed:
         self.fields.extend(fields)
 
         return self
