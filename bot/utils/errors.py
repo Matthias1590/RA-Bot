@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Union
 from bot.utils.sendable import Sendable
 import discord
 
@@ -9,7 +9,9 @@ class SendableError(Exception, Sendable):
     title: str
     description: str
 
-    async def send(self, ctx: discord.ApplicationContext) -> discord.Message:
+    async def send(
+        self, ctx: discord.ApplicationContext
+    ) -> Union[discord.Interaction, discord.WebhookMessage]:
         embed = (
             StatusEmbed()
             .set_status(EmbedStatus.ERROR)
@@ -27,9 +29,7 @@ class InternalServerError(SendableError):
     def __init__(self, exception: Exception) -> None:
         self.exception = exception
 
-    @property
-    def description(self) -> str:
-        return str(self.exception)
+        self.description = str(self.exception)
 
 
 class InvalidArgumentError(SendableError):
@@ -43,9 +43,7 @@ class InvalidArgumentTypeError(InvalidArgumentError):
         self.got = got
         self.expected = expected
 
-    @property
-    def description(self) -> str:
-        return f"Expected `{self.expected.__name__}` but got `{self.got.__name__}` instead."
+        self.description = f"Expected `{self.expected.__name__}` but got `{self.got.__name__}` instead."
 
 
 # TODO: Add constraints which we can use to validate arguments (IntConstraint(min, max), CustomContstraint(func), etc.)

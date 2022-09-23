@@ -10,7 +10,7 @@ class ListenersCog(BaseCog):
     async def on_application_command_error(
         self,
         ctx: discord.ApplicationContext,
-        error: discord.ClientException,  # TODO: Get the type of error for type hinting
+        error: discord.ApplicationCommandInvokeError,
     ) -> None:
         if isinstance(error.original, SendableError):
             await error.original.send(ctx)
