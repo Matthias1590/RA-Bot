@@ -12,7 +12,6 @@ WEBHOOK_URL = ""
 
 class ColoramaStatus(Enum):
     INFO = colorama.Fore.GREEN
-    SUCCESS = colorama.Fore.GREEN
     WARNING = colorama.Fore.YELLOW
     ERROR = colorama.Fore.RED
     DEBUG = colorama.Fore.LIGHTBLACK_EX
@@ -32,19 +31,6 @@ class WebhookLogger:
             log_embed.set_description(message)
             log_embed.set_timestamp(datetime.datetime.now())
             log_embed.set_status(EmbedStatus.INFO)
-
-            await log_webhook.send(embed=log_embed.build())
-
-
-    async def success(self, message):
-        async with aiohttp.ClientSession() as session:
-            log_webhook = Webhook.from_url(url=self.webhook, session=session)
-
-            log_embed = StatusEmbed()
-            log_embed.set_title(f":white_check_mark: Success log")
-            log_embed.set_description(message)
-            log_embed.set_timestamp(datetime.datetime.now())
-            log_embed.set_status(EmbedStatus.SUCCESS)
 
             await log_webhook.send(embed=log_embed.build())
 
